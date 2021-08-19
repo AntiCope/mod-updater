@@ -12,23 +12,29 @@ jobs:
         include:
           - os: macos-latest
             target: macos
-            cmd: pyinstaller -F -n updater
+            cmd: python3 -m pyinstaller -F -n updater
             file: updater
           - os: windows-latest
             target: windows
-            cmd: pyinstaller -F -n updater
+            cmd: python3 -m pyinstaller -F -n updater
             file: updater.exe
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v2
       - name: Set up Python 3.8
         uses: actions/setup-python@v2
         with:
           python-version: 3.8
+      - uses: actions/cache@v2
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-pip-
       - name: Install dependencies
         run: |
           python3 -m pip install --upgrade pip
           pip3 install -r requirements.txt
-      - name: Build with pyinstaller for ${{matrix.target}}
+      - name: Build with PyInstaller for ${{matrix.target}}
         run: ${{matrix.cmd}}
       - name: Upload release
         uses: svenstaro/upload-release-action@2.2.1
