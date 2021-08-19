@@ -4,8 +4,8 @@ on:
     branches: [ master ]
 
 jobs:
-  release:
-    name: Setup Release
+  createrelease:
+    name: Create Release
     runs-on: ubuntu-latest
     steps:
     - name: Delete previous release
@@ -29,6 +29,7 @@ jobs:
   
   build:
     name: Build packages
+    needs: createrelease
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
