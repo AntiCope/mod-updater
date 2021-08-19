@@ -4,6 +4,21 @@ on:
     branches: [ master ]
 
 jobs:
+  release-py:
+    name: Release updater.py
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Upload release
+      uses: svenstaro/upload-release-action@2.2.1
+      with:
+        repo_token: ${{ secrets.GITHUB_TOKEN }}
+        tag: "latest"
+        file: updater.py
+        asset_name: updater.py
+        overwrite: true
+    
+  
   build:
     name: Build packages
     runs-on: ${{ matrix.os }}
@@ -18,12 +33,6 @@ jobs:
             target: windows
             cmd: pyinstaller -F -n updater updater.py
             file: updater.exe
-          - os: ubuntu-latest
-            target: linux
-            cmd: >
-              mkdir ./dist/
-              cp updater.py ./dist/
-            file: updater.py
     steps:
       - uses: actions/checkout@v2
       - name: Set up Python 3.8
@@ -49,4 +58,5 @@ jobs:
           tag: "latest"
           file: ./dist/${{matrix.file}}
           asset_name: ${{matrix.target}}-${{matrix.file}}
+          overwrite: true
         
