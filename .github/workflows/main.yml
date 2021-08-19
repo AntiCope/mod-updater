@@ -29,7 +29,7 @@ jobs:
           python3 -m pip install --upgrade pip
           pip3 install -r requirements.txt
       - name: Build with pyinstaller for ${{matrix.target}}
-        run: cmd
+        run: ${{matrix.cmd}}
       - name: Upload release
         uses: svenstaro/upload-release-action@2.2.1
         with:
