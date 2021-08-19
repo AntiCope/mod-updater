@@ -14,7 +14,7 @@ jobs:
       with:
         body: "Commit: ${{ github.sha }} (${{github.actor}})"
         repo_token: ${{ secrets.GITHUB_TOKEN }}
-        tag: "latest"
+        tag: ${{ github.ref }}
         file: updater.py
         asset_name: updater.py
         overwrite: true
@@ -56,7 +56,7 @@ jobs:
         uses: svenstaro/upload-release-action@2.2.1
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
-          tag: "latest"
+          tag: ${{ github.ref }}
           file: ./dist/${{matrix.file}}
           asset_name: ${{matrix.target}}-${{matrix.file}}
           overwrite: true
