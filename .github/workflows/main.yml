@@ -37,10 +37,12 @@ jobs:
           - os: macos-latest
             target: macos
             cmd: pyinstaller -F -n updater updater.py
+            cache: ~/Library/Caches/pip
             file: updater
           - os: windows-latest
             target: windows
             cmd: pyinstaller -F -n updater updater.py
+            cache: ~\AppData\Local\pip\Cache
             file: updater.exe
     steps:
       - uses: actions/checkout@v2
@@ -50,7 +52,7 @@ jobs:
           python-version: 3.8
       - uses: actions/cache@v2
         with:
-          path: ~/.cache/pip
+          path: ${{ matrix.cache }}
           key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
           restore-keys: |
             ${{ runner.os }}-pip-
@@ -58,14 +60,14 @@ jobs:
         run: |
           python3 -m pip install --upgrade pip
           pip3 install -r requirements.txt
-      - name: Build for ${{matrix.target}}
-        run: ${{matrix.cmd}}
+      - name: Build for ${{ matrix.target }}
+        run: ${{ matrix.cmd }}
       - name: Upload release
         uses: svenstaro/upload-release-action@2.2.1
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           tag: "latest"
-          file: ./dist/${{matrix.file}}
-          asset_name: ${{matrix.target}}-${{matrix.file}}
+          file: ./dist/${{ matrix.file }}
+          asset_name: ${{ matrix.target }}-${{ matrix.file }}
           overwrite: true
         
