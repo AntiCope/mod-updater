@@ -1,0 +1,84 @@
+{
+    "version": ["1.17.1", "1.17"],
+    "path": ".",
+    "direct": [
+        {
+            "name": "meteor-client.jar",
+            "url": "https://meteorclient.com/download?devBuild=latest"
+        },
+        {
+            "name": "meteor-rejects-addon.jar",
+            "url": "https://github.com/AntiCope/meteor-rejects/releases/download/latest-1.17/meteor-rejects-addon-0.0.4.jar"
+        },
+        {
+            "name": "meteor-crash-addon.jar",
+            "url": "https://github.com/Wide-Cat/meteor-crash-addon/releases/download/latest/meteor-crash-addon-0.2.jar"
+        }
+    ],
+    "modrinth": [
+        {
+            "name": "mod-menu.jar",
+            "id": "mOgUt4GM"
+        },
+        {
+            "name": "lazy-dfu.jar",
+            "id": "hvFnDODi"
+        },
+        {
+            "name": "lambdabettergrass.jar",
+            "id": "2Uev7LdA"
+        },
+        {
+            "name": "cull-leaves.jar",
+            "id": "GNxdLCoP"
+        },
+        {
+            "name": "falling-leaves.jar",
+            "id": "WhbRG4iK"
+        },
+        {
+            "name": "libjf.jar",
+            "id": "WKwQAwke"
+        },
+        {
+            "name": "resourcepack-opts.jar",
+            "id": "TiF5QWZY"
+        },
+        {
+            "name": "slyde.jar",
+            "id": "diCZrsch"
+        },
+        {
+            "name": "roughly-searchable.jar",
+            "id": "njGhQ4fN"
+        },
+        {
+            "name": "fabric-api.jar",
+            "id": "P7dR8mSH"
+        }
+    ],
+    "github_releases": [
+        {
+            "name": "clientcommands.jar",
+            "repo": "Earthcomputer/clientcommands"
+        }
+    ],
+    "curseforge": [
+        {
+            "name": "egg-tab.jar",
+            "id": 360449
+        },
+        {
+            "name": "roughly-enough-items.jar",
+            "id": 310111
+        },
+        {
+            "name": "betterf3.jar",
+            "id": 401648
+        },
+        {
+            "name": "roughly-enough-resources.jar",
+            "id": 325625
+        }
+    ]
+}
