@@ -4,17 +4,24 @@ on:
     branches: [ master ]
 
 jobs:
-  release-py:
-    name: Release updater.py
+  release:
+    name: Setup Release
     runs-on: ubuntu-latest
     steps:
+    - name: Delete previous release
+      uses: dev-drprasad/delete-tag-and-release@v0.2.0
+      with:
+        delete_release: true
+        tag_name: "latest"
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     - uses: actions/checkout@v2
     - name: Upload release
       uses: svenstaro/upload-release-action@2.2.1
       with:
         body: "Commit: ${{ github.sha }} (${{github.actor}})"
         repo_token: ${{ secrets.GITHUB_TOKEN }}
-        tag: ${{ github.ref }}
+        tag: "latest"
         file: updater.py
         asset_name: updater.py
         overwrite: true
@@ -56,7 +63,7 @@ jobs:
         uses: svenstaro/upload-release-action@2.2.1
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
-          tag: ${{ github.ref }}
+          tag: "latest"
           file: ./dist/${{matrix.file}}
           asset_name: ${{matrix.target}}-${{matrix.file}}
           overwrite: true
