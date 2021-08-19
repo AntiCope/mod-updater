@@ -51,7 +51,7 @@ if not gui:
     print("Running without gui")
 else:
     app = wx.App()
-    progress = wx.ProgressDialog("Downloading mods", "", data['count'], style=wx.PD_CAN_ABORT | wx.PD_ELAPSED_TIME | wx.PD_REMAINING_TIME)
+    progress = wx.ProgressDialog("Downloading mods", "Initializing", data['count'], style=wx.PD_CAN_ABORT | wx.PD_ELAPSED_TIME | wx.PD_REMAINING_TIME)
 
 completed = 0
 
