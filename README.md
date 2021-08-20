@@ -13,8 +13,7 @@ A pretty bad automatic mod updater. Supports direct links, modrinth, github rele
     - [windows-updater.exe](https://github.com/AntiCope/mod-updater/releases/download/latest/windows-updater.exe) if you are using windows
     - [macos-updater](https://github.com/AntiCope/mod-updater/releases/download/latest/macos-updater) if you are using mac os
     - [updater.py](https://github.com/AntiCope/mod-updater/releases/download/latest/updater.py) if you are using linux *(remember to install [requests](https://pypi.org/project/requests/) and [wxPython](https://wiki.wxpython.org/How%20to%20install%20wxPython))*
-2. Create `updater.json` use schema defined [below](#configuration)
-
+2. Create `updater.json`in the same directory as your binary. Use schema defined [below](#configuration)
 
 # Configuration
 If you are using an [editor that supports json schema](https://json-schema.org/implementations.html), you can start by creating `updater.json` with following contents:
