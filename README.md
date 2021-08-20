@@ -20,7 +20,7 @@ A pretty bad automatic mod updater. Supports direct links, modrinth, github rele
 If you are using an [editor that supports json schema](https://json-schema.org/implementations.html), you can start by creating `updater.json` with following contents:
 ```json
 {
-    "$schema": "https://github.com/AntiCope/mod-updater/blob/master/schema.json"
+    "$schema": "https://raw.githubusercontent.com/AntiCope/mod-updater/master/schema.json"
 }
 ```
 This should help you create valid configuration file.
