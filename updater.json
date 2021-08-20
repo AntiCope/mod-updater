@@ -50,10 +50,6 @@
             "id": "diCZrsch"
         },
         {
-            "name": "roughly-searchable.jar",
-            "id": "njGhQ4fN"
-        },
-        {
             "name": "fabric-api.jar",
             "id": "P7dR8mSH"
         }
@@ -76,10 +72,6 @@
         {
             "name": "betterf3.jar",
             "id": 401648
-        },
-        {
-            "name": "roughly-enough-resources.jar",
-            "id": 325625
         }
     ]
 }

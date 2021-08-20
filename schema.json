@@ -100,10 +100,6 @@
     },
     "required": [
         "version",
-        "path",
-        "direct",
-        "modrinth",
-        "github_releases",
-        "curseforge"
+        "path"
     ]
 }

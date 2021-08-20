@@ -3,6 +3,7 @@ import requests
 from threading import Thread
 import sys
 from os import chdir
+from dateutil.parser import isoparse
 from time import sleep
 
 try:
@@ -27,6 +28,7 @@ if gui:
     import wx
 
 CATEGORY_KEYS = ['direct', 'modrinth', 'github_releases', 'curseforge']
+JAR_MIMETYPES = ["application/x-java-archive", "application/java-archive"]
 
 def load_data():
     try:
@@ -93,43 +95,53 @@ def set_intersect(a, b):
             return ai
     return False
 
+def sort_entries(entry, key):
+    return sorted(entry, key=lambda x: isoparse(x[key]), reverse=True)
+
 def download_direct(mod):
     download(mod['url'], mod['name'])
 
 def download_modrinth(mod):
     r = requests.get(f"https://api.modrinth.com/api/v1/mod/{mod['id']}/version")
     r = r.json()
+    r = sort_entries(r, 'date_published')
     version = {}
     for ver in r:
         if set_intersect(data['version'], ver['game_versions']):
             version = ver
             break
     if not version:
-        raise KeyError("no valid version found")
+        raise KeyError(f"No valid version found: {mod['name']}")
     download(version['files'][0]['url'], mod['name'])
     
 def download_github_releases(mod):
     r = requests.get(f"https://api.github.com/repos/{mod['repo']}/releases")
     r = r.json()
+    r = sort_entries(r, 'published_at')
     dl = ""
     for release in r:
         for asset in release['assets']:
-            if asset['content_type'] == "application/x-java-archive":
+            if asset['content_type'] in JAR_MIMETYPES:
                 dl = asset['browser_download_url']
                 break
+        else:
+            continue
+        break
     if not dl:
-        raise KeyError("No valid release found")
+        raise KeyError(f"No valid release found: {mod['name']}")
     download(dl, mod['name'])
     
 def download_curseforge(mod):
     r = requests.get(f"https://addons-ecs.forgesvc.net/api/v2/addon/{mod['id']}/files", headers={"User-Agent": "Mozilla/5.0 (Windows NT 6.2; Win64; x64; rv:47.0) Gecko/20100101 Firefox/47.0"})
     r = r.json()
+    r = sort_entries(r, 'fileDate')
     dl = ""
     for file in r:
         if set_intersect(data['version'], file['gameVersion']):
             dl = file['downloadUrl']
+            break
     if not dl:
-        raise KeyError("No valid release found")
+        raise KeyError(f"No valid version found: {mod['name']}")
     download(dl, mod['name'])
 
 def download_mods(category, func):
