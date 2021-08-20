@@ -16,12 +16,10 @@
                 {
                     "type": "object",
                     "properties": {
-                        "name": {
+                        "name": { "$ref": "#/definitions/name"},
+                        "url": { 
                             "type": "string",
-                            "description": "Filename you want your mod to be saved as"
-                        },
-                        "url": {
-                            "type": "string"
+                            "format": "uri"
                         }
                     },
                     "required": [
@@ -37,10 +35,7 @@
                 {
                     "type": "object",
                     "properties": {
-                        "name": {
-                            "type": "string",
-                            "description": "Filename you want your mod to be saved as"
-                        },
+                        "name": { "$ref": "#/definitions/name"},
                         "id": {
                             "type": "string"
                         }
@@ -58,10 +53,7 @@
                 {
                     "type": "object",
                     "properties": {
-                        "name": {
-                            "type": "string",
-                            "description": "Filename you want your mod to be saved as"
-                        },
+                        "name": { "$ref": "#/definitions/name"},
                         "repo": {
                             "type": "string"
                         }
@@ -79,10 +71,7 @@
                 {
                     "type": "object",
                     "properties": {
-                        "name": {
-                            "type": "string",
-                            "description": "Filename you want your mod to be saved as"
-                        },
+                        "name": { "$ref": "#/definitions/name"},
                         "id": {
                             "type": ["integer", "string"]
                         }
@@ -93,6 +82,13 @@
                     ]
                 }
             ]
+        }
+    },
+    "definitions": {
+        "name": {
+            "pattern": "[^\\/:?*\"<>|]*\\.jar",
+            "type": "string",
+            "description": "Filename you want your mod to be saved as"
         }
     },
     "required": [
