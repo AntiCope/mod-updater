@@ -1,7 +1,15 @@
 name: PyInstaller Build
+
+concurrency:
+  group: "main"
+  cancel-in-progress: true
+
 on:
   push:
     branches: [ master ]
+    paths:
+      - '*.py'
+      - '.github/workflows/main.yml'
 
 jobs:
   createrelease:

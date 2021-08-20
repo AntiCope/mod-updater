@@ -127,6 +127,9 @@ def download_curseforge(mod):
 
 def download_mods(category, func):
     for mod in data[category]:
+        if gui and progress.WasCancelled():
+            print(f"\033[93mCancelled\033[0m")
+            break
         update_name(mod['name'])
         try:
             func(mod)

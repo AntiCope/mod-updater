@@ -1,4 +1,5 @@
 {
+    "$schema": "https://github.com/AntiCope/mod-updater/blob/master/schema.json",
     "version": ["1.17.1", "1.17"],
     "path": ".",
     "direct": [

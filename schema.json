@@ -1,0 +1,106 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "properties": {
+        "version": {
+            "type": ["array", "string"],
+            "description": "Minecraft version or versions."
+        },
+        "path": {
+            "type": "string",
+            "description": "Path to .minecraft/mods"
+        },
+        "direct": {
+            "type": "array",
+            "items": [
+                {
+                    "type": "object",
+                    "properties": {
+                        "name": {
+                            "type": "string",
+                            "description": "Filename you want your mod to be saved as"
+                        },
+                        "url": {
+                            "type": "string"
+                        }
+                    },
+                    "required": [
+                        "name",
+                        "url"
+                    ]
+                }
+            ]
+        },
+        "modrinth": {
+            "type": "array",
+            "items": [
+                {
+                    "type": "object",
+                    "properties": {
+                        "name": {
+                            "type": "string",
+                            "description": "Filename you want your mod to be saved as"
+                        },
+                        "id": {
+                            "type": "string"
+                        }
+                    },
+                    "required": [
+                        "name",
+                        "id"
+                    ]
+                }
+            ]
+        },
+        "github_releases": {
+            "type": "array",
+            "items": [
+                {
+                    "type": "object",
+                    "properties": {
+                        "name": {
+                            "type": "string",
+                            "description": "Filename you want your mod to be saved as"
+                        },
+                        "repo": {
+                            "type": "string"
+                        }
+                    },
+                    "required": [
+                        "name",
+                        "repo"
+                    ]
+                }
+            ]
+        },
+        "curseforge": {
+            "type": "array",
+            "items": [
+                {
+                    "type": "object",
+                    "properties": {
+                        "name": {
+                            "type": "string",
+                            "description": "Filename you want your mod to be saved as"
+                        },
+                        "id": {
+                            "type": ["integer", "string"]
+                        }
+                    },
+                    "required": [
+                        "name",
+                        "id"
+                    ]
+                }
+            ]
+        }
+    },
+    "required": [
+        "version",
+        "path",
+        "direct",
+        "modrinth",
+        "github_releases",
+        "curseforge"
+    ]
+}
