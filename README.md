@@ -12,7 +12,7 @@ A pretty bad automatic mod updater. Supports direct links, modrinth, github rele
 1. Download:
     - [windows-updater.exe](https://github.com/AntiCope/mod-updater/releases/download/latest/windows-updater.exe) if you are using windows
     - [macos-updater](https://github.com/AntiCope/mod-updater/releases/download/latest/macos-updater) if you are using mac os
-    - [updater.py](https://github.com/AntiCope/mod-updater/releases/download/latest/updater.py) if you are using linux *(remember to install dependencies)*
+    - [updater.py](https://github.com/AntiCope/mod-updater/releases/download/latest/updater.py) if you are using linux *(remember to install [requests](https://pypi.org/project/requests/) and [wxPython](https://wiki.wxpython.org/How%20to%20install%20wxPython))*
 2. Create `updater.json` use schema defined [below](#configuration)
 
 

@@ -3,6 +3,13 @@ import requests
 from threading import Thread
 import sys
 from os import chdir
+from time import sleep
+
+try:
+    from colorama import init
+    init()
+except ImportError:
+    pass
 
 gui = True
 for arg in sys.argv:
@@ -145,6 +152,7 @@ threads.append(Thread(target=download_mods, args=("curseforge", download_cursefo
 
 for thread in threads:
     thread.start()
+    sleep(0.1)
 
 for thread in threads:
     try:
