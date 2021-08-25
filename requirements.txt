@@ -1,4 +1,5 @@
 wxPython
 requests
+python-dateutil
 pyinstaller
 colorama
