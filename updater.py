@@ -38,11 +38,19 @@ def load_data():
     
     for key in CATEGORY_KEYS+['version']:
         if key not in data.keys():
-            print(f"\033[93mWarn: {key} doesn't exist\033[0m")
+            print(f"\033[93mWarn: \"{key}\" doesn't exist\033[0m")
             data[key] = []
     
     if isinstance(data['version'], str):
         data['version'] = [data['version']]
+        
+    if "loader" not in data.keys():
+        print(f"\033[93mWarn: \"loader\" doesn't exist\033[0m")
+        data['loader'] = 'fabric'
+        
+    if "path" not in data.keys():
+        print(f"\033[93mWarn: \"path\" doesn't exist\033[0m")
+        data['path'] = '.'
         
     data['count'] = 0
     for key in CATEGORY_KEYS:
@@ -107,7 +115,7 @@ def download_modrinth(mod):
     r = sort_entries(r, 'date_published')
     version = {}
     for ver in r:
-        if set_intersect(data['version'], ver['game_versions']):
+        if set_intersect(data['version'], ver['game_versions']) and data['loader'] in ver['loaders']:
             version = ver
             break
     if not version:

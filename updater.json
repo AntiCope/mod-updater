@@ -1,6 +1,7 @@
 {
     "$schema": "https://raw.githubusercontent.com/AntiCope/mod-updater/master/schema.json",
     "version": ["1.17.1", "1.17"],
+	"loader": "fabric",
     "path": ".",
     "direct": [
         {
@@ -43,21 +44,37 @@
         },
         {
             "name": "resourcepack-opts.jar",
-            "id": "TiF5QWZY"
+            "id": "disabled:TiF5QWZY"
         },
         {
             "name": "slyde.jar",
             "id": "diCZrsch"
         },
         {
+            "name": "seed-mapper.jar",
+            "id": "C4GbEnuY"
+        },
+        {
             "name": "fabric-api.jar",
             "id": "P7dR8mSH"
-        }
+        },
+		{
+			"name": "smoothboot.jar",
+			"id": "FWumhS4T"
+		},
+		{
+			"name": "wthit.jar",
+			"id": "6AQIaxuO"
+		}
     ],
     "github_releases": [
         {
             "name": "clientcommands.jar",
             "repo": "Earthcomputer/clientcommands"
+        },
+		{
+            "name": "multiconnect.jar",
+            "repo": "disabled:Earthcomputer/multiconnect"
         }
     ],
     "curseforge": [

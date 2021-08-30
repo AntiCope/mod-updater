@@ -1,5 +1,5 @@
 {
-    "$schema": "http://json-schema.org/draft-04/schema#",
+    "$schema": "http://json-schema.org/draft-06/schema#",
     "type": "object",
     "properties": {
         "version": {
@@ -12,6 +12,14 @@
         "path": {
             "type": "string",
             "description": "Path to .minecraft/mods"
+        },
+        "loader": {
+            "type": "string",
+            "description": "What mod loader are you using.",
+            "examples": [
+                "fabric",
+                "forge"
+            ]
         },
         "direct": {
             "type": "array",
